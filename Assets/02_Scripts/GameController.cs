@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
         blockManager.Init(size);
         StartCoroutine(UpdateBlockInput());
     }
-
+    WaitForSeconds waitForSeconds = new WaitForSeconds(2.0f);
     IEnumerator UpdateBlockInput()
     {
         float time = 0.2f;
@@ -24,21 +24,25 @@ public class GameController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 addScore = blockManager.MoveRight();
+                SoundManager.instance.PlaySlide();
                 yield return new WaitForSeconds(time);
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 addScore = blockManager.MoveLeft();
+                SoundManager.instance.PlaySlide();
                 yield return new WaitForSeconds(time);
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 addScore = blockManager.MoveUp();
+                SoundManager.instance.PlaySlide();
                 yield return new WaitForSeconds(time);
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 addScore = blockManager.MoveDown();
+                SoundManager.instance.PlaySlide();
                 yield return new WaitForSeconds(time);
             }
             scoreManager.AddScore(addScore);
@@ -48,6 +52,7 @@ public class GameController : MonoBehaviour
 
     public void RePlay()
     {
+        SoundManager.instance.PlayClick();
         blockManager.Clear();
         scoreManager.Clear();
     }

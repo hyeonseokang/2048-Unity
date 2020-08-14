@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI sizeText;
     public void Next()
     {
+        SoundManager.instance.PlayClick();
         if (sizeIndex < sizeList.Count - 1)
             sizeIndex++;
         UpdateSize();
@@ -25,6 +27,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Prev()
     {
+        SoundManager.instance.PlayClick();
         if (sizeIndex != 0)
             sizeIndex--;
         UpdateSize();
@@ -38,6 +41,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void GameStart()
     {
+        SoundManager.instance.PlayClick();
         SceneManager.LoadScene("InGameScene");
+    }
+
+    public void SetBgmActive(Toggle toggle)
+    {
+        SoundManager.instance.PlayClick();
+        SoundManager.instance.SetBgmActive(toggle.isOn);
     }
 }

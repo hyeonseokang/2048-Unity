@@ -21,8 +21,8 @@ public class BackGroundBlock : MonoBehaviour
         backGroundBlocks = new GameObject[size, size];
 
         float sizeRatio = 4.0f / size;
-        float spacingSize = 20.0f * sizeRatio;
-        float cellSize = 237.5f * sizeRatio;
+        int spacingSize = (int)(20.0f * sizeRatio);
+        int cellSize = (int)(237.5f * sizeRatio);
 
         int spacfingSize_int = (int)spacingSize;
         BackGroundBlocks.padding = new RectOffset(spacfingSize_int, spacfingSize_int, spacfingSize_int, spacfingSize_int);
